@@ -1,5 +1,7 @@
 import Sound from "./sounds.js";
 import { Timer } from "./timer.js";
+import { Controls } from "./controls.js";
+import { buttonsMusic } from "./buttonsMusic.js";
 
 const buttonPlay = document.querySelector(".play");
 const buttonPause = document.querySelector(".pause");
@@ -13,88 +15,40 @@ const soundChuva = document.querySelector(".chuva");
 const soundLanchonete = document.querySelector(".lanchonete");
 const soundLareira = document.querySelector(".lareira");
 let minutes = Number(displayMinutes.textContent);
-let seconds = Number(displaySeconds.textContent);
-let timeTimeOut;
-
-let iconChuva = document.querySelector(".chuva svg path");
-let iconFloresta = document.querySelector(".floresta svg path");
-let iconLareira = document.querySelector(".lareira svg path");
-let iconLanchonete = document.querySelector(".lanchonete svg path");
-
-// funções para alterar a cor dos botões e icone com o click
-function buttonColorFloresta() {
-  soundFloresta.style.backgroundColor = "#02799d";
-  soundChuva.style.backgroundColor = "#E1E1E6";
-  soundLanchonete.style.backgroundColor = "#E1E1E6";
-  soundLareira.style.backgroundColor = "#E1E1E6";
-
-  iconFloresta.style.fill = "white";
-  iconChuva.style.fill = "#323238";
-  iconLanchonete.style.fill = "#323238";
-  iconLareira.style.fill = "#323238";
-}
-
-function buttonColorChuva() {
-  soundChuva.style.backgroundColor = "#02799d";
-  soundFloresta.style.backgroundColor = "#E1E1E6";
-  soundLanchonete.style.backgroundColor = "#E1E1E6";
-  soundLareira.style.backgroundColor = "#E1E1E6";
-
-  iconChuva.style.fill = "white";
-  iconFloresta.style.fill = "#323238";
-  iconLanchonete.style.fill = "#323238";
-  iconLareira.style.fill = "#323238";
-}
-
-function buttonColorLanchonete() {
-  soundLanchonete.style.backgroundColor = "#02799d";
-  soundFloresta.style.backgroundColor = "#E1E1E6";
-  soundChuva.style.backgroundColor = "#E1E1E6";
-  soundLareira.style.backgroundColor = "#E1E1E6";
-
-  iconLanchonete.style.fill = "white";
-  iconChuva.style.fill = "#323238";
-  iconFloresta.style.fill = "#323238";
-  iconLareira.style.fill = "#323238";
-}
-
-function buttonColorLareira() {
-  soundLareira.style.backgroundColor = "#02799d";
-  soundFloresta.style.backgroundColor = "#E1E1E6";
-  soundChuva.style.backgroundColor = "#E1E1E6";
-  soundLanchonete.style.backgroundColor = "#E1E1E6";
-
-  iconLareira.style.fill = "white";
-  iconChuva.style.fill = "#323238";
-  iconLanchonete.style.fill = "#323238";
-  iconFloresta.style.fill = "#323238";
-}
 
 // Função para resetar o botão play quando o cronometro zerar e resetar o display
 export function resetControlDisplay() {
   buttonPlay.classList.remove("hide");
   buttonPause.classList.add("hide");
-  timer.updateDisplay(minutes, seconds);
+  timer.updateDisplay(minutes, 0);
 }
+
+const buttonsMusicColor = buttonsMusic({
+  soundFloresta,
+  soundChuva,
+  soundLareira,
+  soundLanchonete,
+});
+
+const controls = Controls({
+  buttonPause,
+  buttonPlay,
+});
 
 const timer = Timer({
   displayMinutes,
   displaySeconds,
-  timeTimeOut,
 });
 
 const sound = Sound();
 
 buttonPlay.addEventListener("click", function () {
-  buttonPlay.classList.add("hide");
-  buttonPause.classList.remove("hide");
-
+  controls.play();
   timer.temporizador();
 });
 
 buttonPause.addEventListener("click", function () {
-  buttonPlay.classList.remove("hide");
-  buttonPause.classList.add("hide");
+  controls.pause();
   timer.hold();
 });
 
@@ -129,7 +83,7 @@ soundFloresta.addEventListener("click", function () {
   sound.soundLanchonete.pause();
   sound.soundLareira.pause();
 
-  buttonColorFloresta();
+  buttonsMusicColor.buttonColorFloresta();
 });
 
 soundChuva.addEventListener("click", function () {
@@ -138,7 +92,7 @@ soundChuva.addEventListener("click", function () {
   sound.soundLanchonete.pause();
   sound.soundLareira.pause();
 
-  buttonColorChuva();
+  buttonsMusicColor.buttonColorChuva();
 });
 
 soundLanchonete.addEventListener("click", function () {
@@ -147,7 +101,7 @@ soundLanchonete.addEventListener("click", function () {
   sound.soundFloresta.pause();
   sound.soundLareira.pause();
 
-  buttonColorLanchonete();
+  buttonsMusicColor.buttonColorLanchonete();
 });
 
 soundLareira.addEventListener("click", function () {
@@ -156,5 +110,5 @@ soundLareira.addEventListener("click", function () {
   sound.soundLanchonete.pause();
   sound.soundChuva.pause();
 
-  buttonColorLareira();
+  buttonsMusicColor.buttonColorLareira();
 });

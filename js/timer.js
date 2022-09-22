@@ -1,6 +1,8 @@
 import { resetControlDisplay } from "./index.js";
 
-export function Timer({ displayMinutes, displaySeconds, timeTimeOut }) {
+export function Timer({ displayMinutes, displaySeconds }) {
+  let timeTimeOut;
+
   function hold() {
     clearTimeout(timeTimeOut);
   }
