@@ -2,18 +2,20 @@ import Sound from "./sounds.js";
 import { Timer } from "./timer.js";
 import { Controls } from "./controls.js";
 import { buttonsMusic } from "./buttonsMusic.js";
+import {
+  buttonPlay,
+  buttonPause,
+  buttonMais,
+  buttonMenos,
+  buttonStop,
+  displayMinutes,
+  displaySeconds,
+  soundFloresta,
+  soundChuva,
+  soundLanchonete,
+  soundLareira,
+} from "./elements.js";
 
-const buttonPlay = document.querySelector(".play");
-const buttonPause = document.querySelector(".pause");
-const buttonMais = document.querySelector(".mais");
-const buttonMenos = document.querySelector(".menos");
-const buttonStop = document.querySelector(".stop");
-const displayMinutes = document.querySelector(".minutes");
-const displaySeconds = document.querySelector(".seconds");
-const soundFloresta = document.querySelector(".floresta");
-const soundChuva = document.querySelector(".chuva");
-const soundLanchonete = document.querySelector(".lanchonete");
-const soundLareira = document.querySelector(".lareira");
 let minutes = Number(displayMinutes.textContent);
 
 // Função para resetar o botão play quando o cronometro zerar e resetar o display
