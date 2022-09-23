@@ -8,6 +8,7 @@
 }
 
 body {
+  position: relative;
   font-size: 1.6rem;
   display: grid;
   min-height: 100vh;
@@ -46,7 +47,7 @@ main {
   border: none;
   cursor: pointer;
 }
-.controls button img {
+.controls button svg {
   width: 4.8rem;
   height: 4.8rem;
 }
@@ -77,5 +78,48 @@ main {
   background-color: #02799d;
   cursor: pointer;
 
-  transition: all 1s;
+  transition: all 2s;
+}
+
+/*Tema dark*/
+.button {
+  position: absolute;
+  width: 4.4rem;
+  height: 4.4rem;
+  right: 6.4rem;
+  top: 6.4rem;
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+.invisible {
+  display: none;
+}
+.dark {
+  background-color: #121214;
+  color: #ffffff;
+}
+.dark .controls .play svg path,
+.dark .controls .pause svg path,
+.dark .controls .stop svg path,
+.dark .controls .mais svg path,
+.dark .controls .menos svg path {
+  fill: #ffffff;
+}
+.dark #btn-light svg path {
+  fill: #ffffff;
+}
+
+.dark .cards .card {
+  background-color: #29292e;
+}
+.dark .cards .card:hover {
+  background-color: #0a3442;
+}
+.dark .cards .floresta svg path,
+.dark .cards .chuva svg path,
+.dark .cards .lanchonete svg path,
+.dark .cards .lareira svg path {
+  fill: #ffffff;
 }

@@ -2,6 +2,7 @@ import Sound from "./sounds.js";
 import { Timer } from "./timer.js";
 import { Controls } from "./controls.js";
 import { buttonsMusic } from "./buttonsMusic.js";
+import { DarkTheme } from "./dark-theme.js";
 import {
   buttonPlay,
   buttonPause,
@@ -14,16 +15,24 @@ import {
   soundChuva,
   soundLanchonete,
   soundLareira,
+  buttonDark,
+  buttonLight,
 } from "./elements.js";
 
 let minutes = Number(displayMinutes.textContent);
 
-// Função para resetar o botão play quando o cronometro zerar e resetar o display
+// Função para resetar o botão play e o display
 export function resetControlDisplay() {
   buttonPlay.classList.remove("hide");
   buttonPause.classList.add("hide");
   timer.updateDisplay(minutes, 0);
 }
+const darkTheme = DarkTheme({
+  soundChuva,
+  soundFloresta,
+  soundLanchonete,
+  soundLareira,
+});
 
 const buttonsMusicColor = buttonsMusic({
   soundFloresta,
@@ -40,6 +49,7 @@ const controls = Controls({
 const timer = Timer({
   displayMinutes,
   displaySeconds,
+  resetControlDisplay,
 });
 
 const sound = Sound();
@@ -113,4 +123,20 @@ soundLareira.addEventListener("click", function () {
   sound.soundChuva.pause();
 
   buttonsMusicColor.buttonColorLareira();
+});
+// tema dark
+function DarkLightTheme() {
+  document.body.classList.toggle("dark");
+}
+
+buttonDark.addEventListener("click", function () {
+  buttonDark.classList.toggle("invisible");
+  buttonLight.classList.toggle("invisible");
+  DarkLightTheme();
+});
+
+buttonLight.addEventListener("click", function () {
+  buttonDark.classList.toggle("invisible");
+  buttonLight.classList.toggle("invisible");
+  DarkLightTheme();
 });

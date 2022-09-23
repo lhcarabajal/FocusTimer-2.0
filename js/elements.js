@@ -9,6 +9,9 @@ const soundFloresta = document.querySelector(".floresta");
 const soundChuva = document.querySelector(".chuva");
 const soundLanchonete = document.querySelector(".lanchonete");
 const soundLareira = document.querySelector(".lareira");
+// dark
+const buttonDark = document.querySelector("#btn-dark");
+const buttonLight = document.querySelector("#btn-light");
 
 export {
   buttonPlay,
@@ -22,4 +25,6 @@ export {
   soundChuva,
   soundLanchonete,
   soundLareira,
+  buttonDark,
+  buttonLight,
 };

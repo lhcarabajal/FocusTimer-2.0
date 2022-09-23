@@ -1,5 +1,4 @@
 import { resetControlDisplay } from "./index.js";
-
 export function Timer({ displayMinutes, displaySeconds }) {
   let timeTimeOut;
 
@@ -26,7 +25,7 @@ export function Timer({ displayMinutes, displaySeconds }) {
       }
 
       if (seconds <= 0) {
-        seconds = 60;
+        seconds = 2;
 
         --minutes;
       }
