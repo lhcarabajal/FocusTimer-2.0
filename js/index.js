@@ -121,8 +121,6 @@ soundLareira.addEventListener("click", function () {
   sound.soundFloresta.pause();
   sound.soundLanchonete.pause();
   sound.soundChuva.pause();
-
-  buttonsMusicColor.buttonColorLareira();
 });
 // tema dark
 function DarkLightTheme() {
@@ -140,3 +138,9 @@ buttonLight.addEventListener("click", function () {
   buttonLight.classList.toggle("invisible");
   DarkLightTheme();
 });
+
+/*Pegando os inputs de volume*/
+const florestaVolume = document.querySelector(".floresta .volume");
+const chuvaVolume = document.querySelector(".chuva .volume");
+const lanchoneteVolume = document.querySelector(".lanchonete .volume");
+const lareiraVolume = document.querySelector(".lareira .volume");
