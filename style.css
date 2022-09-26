@@ -123,3 +123,11 @@ main {
 .dark .cards .lareira svg path {
   fill: #ffffff;
 }
+
+/*Slider volume*/
+.slider {
+  margin-top: 3.8rem;
+}
+.slider input {
+  width: 9rem;
+}
